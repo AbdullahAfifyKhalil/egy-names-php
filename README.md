@@ -9,10 +9,10 @@ This is the engine. Packagist: [`afify/egy-names`](https://packagist.org/package
 ## Install
 
 ```bash
-composer require afify/egy-names
+composer require afify/egy-names:^0.3.6
 ```
 
-Requires PHP 8.1+, `ext-json`, and `ext-zlib`. No Faker dependency.
+Packagist: [`afify/egy-names`](https://packagist.org/packages/afify/egy-names) `0.3.6`. Requires PHP 8.1+, `ext-json`, and `ext-zlib`. No Faker dependency.
 
 ## Use
 
@@ -33,6 +33,10 @@ echo $en->translate('Mohamed Ahmed Ali');     // محمد أحمد علي
 print_r($en->split('محمدأحمدعليحسنالشناوي'));
 echo $en->correct('احمد مصطفا');              // أحمد مصطفى
 echo $en->tashkeel('محمد');
+
+var_export($en->is_valid('محمد'));            // true
+var_export($en->is_valid('الله'));            // false — in the index, not a person's name
+print_r($en->detect_gender('فاطمة محمد علي')); // first personal token wins
 ```
 
 CamelCase aliases (`tashkeelEg`, `detectGender`, `isValid`, …) do the same work. Named arguments use snake_case so Python-shaped calls work.
